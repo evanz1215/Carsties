@@ -1,5 +1,7 @@
 using System.Net;
 
+using MassTransit;
+
 using MongoDB.Driver;
 using MongoDB.Entities;
 
@@ -20,6 +22,15 @@ builder.Services.AddControllers();
 // builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<AuctionSvcHttpClient>().AddPolicyHandler(GetPollicy());
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
 
 var app = builder.Build();
 

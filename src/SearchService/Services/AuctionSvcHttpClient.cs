@@ -1,4 +1,4 @@
-using MongoDB.Entities;
+﻿using MongoDB.Entities;
 
 using SearchService.Models;
 

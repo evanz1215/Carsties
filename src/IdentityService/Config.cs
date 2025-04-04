@@ -20,9 +20,10 @@ public static class Config
     public static IEnumerable<Client> Clients =>
         new Client[]
         {
-            // 僅在測試使用
+
             new Client
             {
+                // 僅在Postman測試使用
                 ClientId ="postman",
                 ClientName = "Postman",
                 AllowedScopes = {"openid", "profile", "auctionApp"},
@@ -33,6 +34,18 @@ public static class Config
                 AllowedGrantTypes = {
                     GrantType.ResourceOwnerPassword,
                 },
+            },
+            new Client
+            {
+                ClientId ="nextApp",
+                ClientName = "nextApp",
+                ClientSecrets = {new Secret("secret".Sha256())},
+                AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                RequirePkce= false,
+                RedirectUris= {"http://localhost:3000/api/auth/callback/id-server"},
+                AllowOfflineAccess = true,
+                AllowedScopes = {"openid", "profile", "auctionApp"},
+                AccessTokenLifetime = 3600 * 24 * 30, // 30 days
             }
         };
 }

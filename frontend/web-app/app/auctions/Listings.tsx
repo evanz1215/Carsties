@@ -9,6 +9,7 @@ import { getData } from "../actions/auctionActions";
 import AppPagination from "../components/AppPagination";
 import AuctionCard from "./AuctionCard";
 import Filters from "./Filters";
+import EmptyFilter from "../components/EmptyFilter";
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
@@ -45,18 +46,24 @@ export default function Listings() {
   return (
     <>
       <Filters />
-      <div className="grid grid-cols-4 gap-6">
-        {data.results.map((auction) => (
-          <AuctionCard auction={auction} key={auction.id} />
-        ))}
-      </div>
-      <div className="flex justify-center mt-4">
-        <AppPagination
-          pageChange={setPageNumber}
-          currentPage={params.pageNumber}
-          pageCount={data.pageCount}
-        />
-      </div>
+      {data.totalCount === 0 ? (
+        <EmptyFilter showRest />
+      ) : (
+        <>
+          <div className="grid grid-cols-4 gap-6">
+            {data.results.map((auction) => (
+              <AuctionCard auction={auction} key={auction.id} />
+            ))}
+          </div>
+          <div className="flex justify-center mt-4">
+            <AppPagination
+              pageChange={setPageNumber}
+              currentPage={params.pageNumber}
+              pageCount={data.pageCount}
+            />
+          </div>
+        </>
+      )}
     </>
   );
 }

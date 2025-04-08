@@ -1,7 +1,6 @@
 "use client";
 
 import { useParamsStore } from "@/hooks/useParamsStore";
-import React from "react";
 import { AiOutlineCar } from "react-icons/ai";
 
 export default function Logo() {

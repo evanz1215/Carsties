@@ -1,7 +1,6 @@
-import React from "react";
-import CountdownTimer from "./CountdownTimer";
-import CarImage from "./CarImage";
 import { Auction } from "@/types";
+import CarImage from "./CarImage";
+import CountdownTimer from "./CountdownTimer";
 
 type Props = {
   auction: Auction;

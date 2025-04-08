@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { ThemeConfig } from "flowbite-react";
+import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./nav/Navbar";
 

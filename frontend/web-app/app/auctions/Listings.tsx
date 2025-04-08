@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import AuctionCard from "./AuctionCard";
-import { Auction, PagedResult } from "@/types";
-import AppPagination from "../components/AppPagination";
-import { getData } from "../actions/auctionActions";
-import Filters from "./Filters";
 import { useParamsStore } from "@/hooks/useParamsStore";
-import { useShallow } from "zustand/shallow";
+import { Auction, PagedResult } from "@/types";
 import qs from "query-string";
+import { useEffect, useState } from "react";
+import { useShallow } from "zustand/shallow";
+import { getData } from "../actions/auctionActions";
+import AppPagination from "../components/AppPagination";
+import AuctionCard from "./AuctionCard";
+import Filters from "./Filters";
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
@@ -18,6 +18,7 @@ export default function Listings() {
       pageSize: state.pageSize,
       searchTerm: state.searchTerm,
       orderBy: state.orderBy,
+      filterBy: state.filterBy,
     }))
   );
 

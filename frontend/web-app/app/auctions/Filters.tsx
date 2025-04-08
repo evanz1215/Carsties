@@ -16,13 +16,12 @@ export default function Filters() {
           {pageSizeButtons.map((value, i) => (
             <Button
               key={i}
-              onClick={() =>
-                setParams({
-                  pageSize: value,
-                })
-              }
-              color={`${pageSize === value ? "red" : "gray"}`}
-              className="focus:ring-0"
+              onClick={() => setParams({ pageSize: value })}
+              className={`focus:ring-0 border border-gray-300 text-gray-700 ${
+                pageSize === value
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "bg-white hover:bg-gray-100"
+              }`}
             >
               {value}
             </Button>

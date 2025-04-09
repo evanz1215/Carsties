@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { useShallow } from "zustand/shallow";
 import { getData } from "../actions/auctionActions";
 import AppPagination from "../components/AppPagination";
+import EmptyFilter from "../components/EmptyFilter";
 import AuctionCard from "./AuctionCard";
 import Filters from "./Filters";
-import EmptyFilter from "../components/EmptyFilter";
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
@@ -20,6 +20,8 @@ export default function Listings() {
       searchTerm: state.searchTerm,
       orderBy: state.orderBy,
       filterBy: state.filterBy,
+      seller: state.seller,
+      winner: state.winner,
     }))
   );
 

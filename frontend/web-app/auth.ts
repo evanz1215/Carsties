@@ -8,8 +8,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   providers: [
     DuendeIDS6Provider({
-      clientId: "id-server",
-      clientSecret: "nextApp",
+      id: "id-server",
+      clientId: "nextApp",
+      clientSecret: "secret",
       issuer: "http://localhost:5001",
       authorization: {
         params: {

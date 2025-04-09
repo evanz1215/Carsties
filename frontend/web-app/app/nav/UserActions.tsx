@@ -4,7 +4,6 @@ import { Dropdown, DropdownDivider, DropdownItem } from "flowbite-react";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { AiFillCar, AiFillTrophy, AiOutlineLogout } from "react-icons/ai";
 import { HiCog, HiUser } from "react-icons/hi2";
 
@@ -13,7 +12,6 @@ type Props = {
 };
 
 export default function UserActions({ user }: Props) {
-  const router = useRouter();
   return (
     <Dropdown inline label={`Weclome ${user.name}`}>
       <DropdownItem icon={HiUser}>
@@ -25,7 +23,7 @@ export default function UserActions({ user }: Props) {
       </DropdownItem>
 
       <DropdownItem icon={AiFillCar}>
-        <Link href="/">Sell my car</Link>
+        <Link href="/auctions/create">Sell my car</Link>
       </DropdownItem>
 
       <DropdownItem icon={HiCog}>

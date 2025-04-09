@@ -6,6 +6,7 @@ declare module "next-auth" {
     user: {
       username: string;
     } & DefaultSession["user"];
+    accessToken: string;
   }
   interface Profile {
     username: string;
@@ -15,5 +16,6 @@ declare module "next-auth" {
 declare module "next-auth/jwt" {
   interface JWT {
     username: string;
+    accessToken: string;
   }
 }
